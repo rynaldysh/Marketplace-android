@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.marketplace.databinding.FragmentNotificationsBinding
+import com.example.marketplace.databinding.FragmentKeranjangBinding
 
 class KeranjangFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentKeranjangBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,10 +25,10 @@ class KeranjangFragment : Fragment() {
         val notificationsViewModel =
             ViewModelProvider(this).get(KeranjangViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentKeranjangBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
+        val textView: TextView = binding.textKeranjang
         notificationsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }

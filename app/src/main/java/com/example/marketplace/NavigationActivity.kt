@@ -3,14 +3,13 @@ package com.example.marketplace
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.marketplace.databinding.ActivityNavigationBinding
 import com.example.marketplace.util.Prefs
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class NavigationActivity : AppCompatActivity() {
 
@@ -29,7 +28,7 @@ class NavigationActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_akun
             )
         )
         /*setupActionBarWithNavController(navController, appBarConfiguration)*/
@@ -37,9 +36,8 @@ class NavigationActivity : AppCompatActivity() {
 
         navView.setOnItemSelectedListener {
 
-            if (it.itemId == R.id.navigation_notifications){
-                val s = Prefs(this)
-                if (s.getIsLogin()){
+            if (it.itemId == R.id.navigation_akun){
+                if (Prefs.isLogin){
                     Log.d("TAG",  "Sudah Login")
                     navController.navigate((it.itemId))
                 } else {

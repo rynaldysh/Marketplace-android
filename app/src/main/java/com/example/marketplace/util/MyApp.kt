@@ -4,6 +4,7 @@ package com.example.marketplace.util
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
+import com.chibatching.kotpref.Kotpref
 import com.example.marketplace.core.di.appModule
 import com.example.marketplace.core.di.repositoryModule
 import com.example.marketplace.core.di.viewModelModule
@@ -18,6 +19,7 @@ class MyApp : Application() {
     }
     override fun onCreate() {
         super.onCreate()
+        Kotpref.init(this)
         startKoin {
             androidContext(this@MyApp)
             modules(listOf(appModule, viewModelModule, repositoryModule))

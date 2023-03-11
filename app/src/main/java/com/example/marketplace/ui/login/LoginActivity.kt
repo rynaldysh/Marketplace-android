@@ -51,16 +51,17 @@ class LoginActivity : AppCompatActivity() {
 
             when (it.state){
                 State.SUCCES->{
-                    binding.pb.toGone()
+                    dismisLoading()
                     showToast("Selamat datang " + it.data?.name)
+                    pushActivity(NavigationActivity::class.java)
 
                 }
                 State.ERROR->{
-                    binding.pb.toGone()
+                    dismisLoading()
                     toastError(it.message ?: "Terjadi kesalahan")
                 }
                 State.LOADING->{
-                    binding.pb.toVisible()
+                   showLoading()
                 }
             }
 
